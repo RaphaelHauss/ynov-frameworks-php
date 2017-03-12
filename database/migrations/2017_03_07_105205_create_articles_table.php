@@ -18,8 +18,8 @@ class CreateArticlesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->text('content');
-            $table->string('title')->default('hello');
-            $table->unsigned('author_id');
+            $table->string('title');
+            $table->unsignedInteger('author_id');
             $table->datetime('published_at')->nullable();
 
             $table->foreign('author_id')
