@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function home()
     {
-        return view('hello');
+    	$articles = Article::all();
+
+        return view('hello', compact('articles'));
     }
 }
