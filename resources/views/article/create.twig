@@ -1,0 +1,20 @@
+{% extends 'layouts.app' %}
+
+{% block content %}
+	<div class="container">
+		<form action="{{ route('article.store') }}" method="post" accept-charset="utf-8">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+			<div class="form-group">
+				<label for="ArticleTitle">Titre :</label>
+				<input type="text" name="title" id="ArticleTitle" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="ArticleContent">Contenu :</label>
+				<textarea class="form-control" name="content" id="ArticleContent"></textarea>
+			</div>
+
+			<button type="submit">Enregistrer</button>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layouts.app' %}
+
+{% block content %}
+	<div class="container">
+		<h1>{{ article.title }}</h1>
+		<p>Par {{ article.author.name }}</p>
+
+		<p>{{ article.content }}</p>
+	</div>
+{% endblock %}

@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article($request->all());
+        $article->author_id = $request->user()->id;
+        $article->save();
+
+        return redirect()->route('article.show', [$article->id]);
     }
 
     /**
@@ -46,9 +50,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return view('article.show', compact('article'));
     }
 
     /**
