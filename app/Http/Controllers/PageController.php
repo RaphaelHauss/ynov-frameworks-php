@@ -9,7 +9,12 @@ class PageController extends Controller
 {
     public function home()
     {
-    	$articles = Article::all();
+    	$articles = Article::published()
+    		->with('author')
+    		->whereHas('author', function ($query) {
+    			$query->where('name', 'Killian lais');
+    		})
+    		->paginate(10);
 
         return view('hello', compact('articles'));
     }
