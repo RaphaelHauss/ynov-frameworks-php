@@ -15,3 +15,7 @@ Route::get('/', [
 	'uses' => 'PageController@home',
 	'as' => 'page.home',
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
