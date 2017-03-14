@@ -16,7 +16,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::published()->paginate();
+        $articles = Article::published()
+            ->with('author')
+            ->paginate();
+
+        \Debugbar::info(\Auth::user());
 
         return view('article.index', compact('articles'));
     }
@@ -43,7 +47,7 @@ class ArticleController extends Controller
         $article->author_id = $request->user()->id;
         $article->save();
 
-        return redirect()->route('article.show', [$article->id]);
+        return redirect()->route('article.show', [$article]);
     }
 
     /**
@@ -79,7 +83,7 @@ class ArticleController extends Controller
     {
         $article->update($request->all());
 
-        return redirect()->route('article.edit', [$article->id]);
+        return redirect()->route('article.edit', [$article]);
     }
 
     /**

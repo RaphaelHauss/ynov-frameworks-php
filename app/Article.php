@@ -3,12 +3,13 @@
 namespace App;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sluggable;
 
     protected $fillable = [
     	'content', 'title', 'author_id', 'published_at',
@@ -17,6 +18,20 @@ class Article extends Model
     protected $dates = ['published_at'];
 
     protected $perPage = 5;
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+            ],
+        ];
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function author()
     {

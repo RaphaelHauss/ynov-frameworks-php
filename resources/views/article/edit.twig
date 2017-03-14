@@ -10,7 +10,7 @@
 			</ul>
 		{% endif %}
 
-		<form action="{{ route('article.update', [article.id]) }}" method="post" accept-charset="utf-8">
+		<form action="{{ route('article.update', [article]) }}" method="post" accept-charset="utf-8">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="_method" value="PATCH">
 
