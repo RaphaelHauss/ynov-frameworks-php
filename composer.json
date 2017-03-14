@@ -11,7 +11,8 @@
         "doctrine/dbal": "^2.5",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "rcrowe/twigbridge": "^0.9.4"
+        "rcrowe/twigbridge": "^0.9.4",
+        "squizlabs/php_codesniffer": "^2.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
