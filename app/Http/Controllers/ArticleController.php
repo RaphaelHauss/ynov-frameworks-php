@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Requests\Article\StoreRequest;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -35,7 +36,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $article = new Article($request->all());
         $article->author_id = $request->user()->id;
