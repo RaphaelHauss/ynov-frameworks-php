@@ -4,16 +4,24 @@
 	<div class="container">
 		<h1>Nos articles - Page {{ articles.currentPage }}</h1>
 
-		{% for article in articles %}
-			<div class="col-md-4">
-				<h2>
-					<a href="{{ route('article.show', article.id) }}">
-						{{ article.title }}
-					</a>
-				</h2>
-				<p>Par {{ article.author.name }}</p>
+		<div class="row">
+			<div class="col-md-12">
+				<a href="{{ route('article.create') }}" class="btn btn-primary">Ajouter un article</a>
 			</div>
-		{% endfor %}
+		</div>
+
+		<div class="row">
+			{% for article in articles %}
+				<div class="col-md-4">
+					<h2>
+						<a href="{{ route('article.show', article) }}">
+							{{ article.title }}
+						</a>
+					</h2>
+					<p>Par {{ article.author.name }}</p>
+				</div>
+			{% endfor %}
+		</div>
 
 		{{ articles.render() | raw() }}
 	</div>
