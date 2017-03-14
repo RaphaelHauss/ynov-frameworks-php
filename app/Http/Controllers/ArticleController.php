@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate();
+        $articles = Article::published()->paginate();
 
         return view('article.index', compact('articles'));
     }
@@ -88,8 +88,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->route('article.index');
     }
 }

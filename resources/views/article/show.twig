@@ -2,8 +2,16 @@
 
 {% block content %}
 	<div class="container">
-		<h1>{{ article.title }} <a href="{{ route('article.edit', [article.id]) }}" class="btn btn-primary">Modifier l'article</a></h1>
-		<p>Par {{ article.author.name }}</p>
+		<h1>
+			{{ article.title }}
+			<a href="{{ route('article.edit', [article.id]) }}" class="btn btn-primary">Modifier l'article</a>
+			<form action="{{ route('article.destroy', [article]) }}" method="post" accept-charset="utf-8">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="_method" value="DELETE">
+				<button class="btn btn-danger" type="submit">Supprimer l'article</button>
+			</form>
+		</h1>
+		<p>Par {{ article.author.name }} le {{ article.published_at | date('d/m/Y H:i:s') }}</p>
 
 		<p>{{ article.content }}</p>
 	</div>

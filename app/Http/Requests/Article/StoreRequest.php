@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => ['required', 'min:10'],
             'content' => ['required', 'min:25'],
+            'published_at' => ['date_format:d/m/Y'],
         ];
     }
 }

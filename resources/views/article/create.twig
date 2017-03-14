@@ -22,6 +22,11 @@
 				<textarea class="form-control" name="content" id="ArticleContent">{{ old('content') }}</textarea>
 			</div>
 
+			<div class="form-group">
+				<label for="ArticlePublishedAt">Date de publication</label>
+				<input type="text" class="form-control" name="published_at" id="ArticlePublishedAt" value="{{ old('published_at', 'now' | date('d/m/Y')) }}">
+			</div>
+
 			<button type="submit">Enregistrer</button>
 		</form>
 	</div>
