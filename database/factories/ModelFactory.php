@@ -28,6 +28,6 @@ $factory->define(App\Article::class, function (Faker\Generator $faker) {
 		'title' => $faker->sentence,
 		'content' => $faker->text,
 		'author_id' => App\User::first()->id,
-		'published_at' => Carbon\Carbon::now(),
+		'published_at' => Carbon\Carbon::now()->format('d/m/Y'),
 	];
 });
