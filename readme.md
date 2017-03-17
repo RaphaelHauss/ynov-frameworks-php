@@ -7,9 +7,15 @@
 - Permet aux utilisateurs connectés de gérer des articles (création, édition,
 suppression)
 
+## Prérequis
+
+- PHP >= 7.0
+- [Composer](https://getcomposer.org)
+
 ## Installation
 
 - Cloner de dépot : `git clone https://github.com/kblais/ynov-frameworks-php.git`
+- Installer les dépendances PHP : `composer install`
 - Copier le fichier `.env.example` en un fichier `.env`
 - Créer un fichier vide `database/database.sqlite`
 - Créer la clé de chiffrement de Laravel : `php artisan key:generate`
