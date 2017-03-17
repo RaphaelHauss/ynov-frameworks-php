@@ -7,7 +7,6 @@
 	<file>./database</file>
 	<file>./routes</file>
 	<file>./tests</file>
-	<file>./deploy.php</file>
 
 	<arg name="colors"></arg>
 
