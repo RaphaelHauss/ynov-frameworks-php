@@ -14,5 +14,54 @@
 		<p>Par {{ article.author.name }} le {{ article.published_at | date('d/m/Y H:i:s') }}</p>
 
 		<p>{{ article.content }}</p>
+
+		<h2>
+			{{ comments.total }} commentaire{{ comments.total <= 1 ? '' : 's' }}
+			{% if comments.lastPage > 1 %}
+				- Page {{ comments.currentPage }}/{{ comments.lastPage }}
+			{% endif %}
+		</h2>
+
+		{% if auth_check() %}
+			<form action="{{ route('article.comment.store', [article]) }}" method="POST">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+				{% if errors.any() %}
+					<div class="alert alert-danger">
+						<ul>
+							{% for error in errors.all() %}
+							<li>{{ error }}</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+
+				<div class="form-group">
+					<label for="CommentContent">Mon commentaire :</label>
+					<textarea class="form-control" name="content" id="CommentContent">{{ old('content') }}</textarea>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Ajouter</button>
+				</div>
+			</form>
+		{% else %}
+			<p><a href="{{ route('login') }}">Connectez-vous</a> pour ajouter un commentaire</p>
+		{% endif %}
+
+		{% for comment in comments %}
+			<div class="panel panel-default">
+				<div class="panel-heading">De {{ comment.user.name }} le {{ comment.created_at | date('d/m/Y à H:i') }}</div>
+				<div class="panel-body">
+					<p>{{ comment.content }}</p>
+				</div>
+			</div>
+		{% else %}
+			<p>Soyez le premier à ajouter un commentaire sur cet article</p>
+		{% endfor %}
+
+		<div class="text-center">
+			{{ comments.render() | raw() }}
+		</div>
 	</div>
 {% endblock %}

@@ -20,8 +20,6 @@ class ArticleController extends Controller
             ->with('author')
             ->paginate();
 
-        \Debugbar::info(\Auth::user());
-
         return view('article.index', compact('articles'));
     }
 
@@ -58,7 +56,12 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('article.show', compact('article'));
+        $comments = $article->comments()
+            ->orderBy('created_at', 'DESC')
+            ->with('user')
+            ->paginate();
+
+        return view('article.show', compact('article', 'comments'));
     }
 
     /**

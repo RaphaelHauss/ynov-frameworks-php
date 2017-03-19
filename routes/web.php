@@ -21,3 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('article', 'ArticleController');
+
+Route::resource('article.comment', 'Article\CommentController', [
+	'only' => ['store'],
+]);
