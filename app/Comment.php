@@ -9,14 +9,14 @@ class Comment extends Model
 {
 	use SoftDeletes;
 
-    protected $fillable = ['user_id', 'article_id', 'content'];
+    protected $fillable = ['author_id', 'article_id', 'content'];
 
     public function article()
     {
     	return $this->belongsTo(Article::class);
     }
 
-    public function user()
+    public function author()
     {
     	return $this->belongsTo(User::class);
     }

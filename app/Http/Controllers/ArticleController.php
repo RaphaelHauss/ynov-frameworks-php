@@ -58,7 +58,7 @@ class ArticleController extends Controller
     {
         $comments = $article->comments()
             ->orderBy('created_at', 'DESC')
-            ->with('user')
+            ->with('author')
             ->paginate();
 
         return view('article.show', compact('article', 'comments'));

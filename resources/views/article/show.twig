@@ -51,7 +51,7 @@
 
 		{% for comment in comments %}
 			<div class="panel panel-default">
-				<div class="panel-heading">De {{ comment.user.name }} le {{ comment.created_at | date('d/m/Y à H:i') }}</div>
+				<div class="panel-heading">De {{ comment.author.name }} le {{ comment.created_at | date('d/m/Y à H:i') }}</div>
 				<div class="panel-body">
 					<p>{{ comment.content }}</p>
 				</div>

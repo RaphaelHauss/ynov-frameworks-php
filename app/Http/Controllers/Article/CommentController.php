@@ -12,7 +12,7 @@ class CommentController extends Controller
     public function store(StoreRequest $request, Article $article)
     {
     	$comment = new Comment($request->all());
-    	$comment->user_id = $request->user()->id;
+    	$comment->author_id = $request->user()->id;
     	$article->comments()->save($comment);
 
     	return redirect()->route('article.show', [$article]);
