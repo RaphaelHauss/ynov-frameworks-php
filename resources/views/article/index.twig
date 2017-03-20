@@ -15,7 +15,7 @@
 				<div class="col-md-4">
 					<h2>
 						<a href="{{ route('article.show', [article]) }}">
-							{{ article.title }}
+							{{ article.title | truncate(15, true, '***') }}
 						</a>
 					</h2>
 					<p>Par {{ article.author.name }} le {{ article.published_at | date('d/m/Y H:i:s') }}</p>
