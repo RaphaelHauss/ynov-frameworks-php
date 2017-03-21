@@ -11,6 +11,11 @@
 				<button class="btn btn-danger" type="submit">Supprimer l'article</button>
 			</form>
 		</h1>
+
+		{% if article.cover %}
+		<img src="/images/{{ article.cover }}" alt="{{ article.title }}">
+		{% endif %}
+
 		<p>Par {{ article.author.name }} le {{ article.published_at | date('d/m/Y H:i:s') }}</p>
 
 		<p>{{ article.content }}</p>

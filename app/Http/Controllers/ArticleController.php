@@ -43,6 +43,15 @@ class ArticleController extends Controller
     {
         $article = new Article($request->all());
         $article->author_id = $request->user()->id;
+
+        if ($request->hasFile('cover')) {
+            $file = $request->file('cover');
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+
+            $article->cover = $filename;
+        }
+
         $article->save();
 
         return redirect()->route('article.show', [$article]);
@@ -84,7 +93,17 @@ class ArticleController extends Controller
      */
     public function update(UpdateRequest $request, Article $article)
     {
-        $article->update($request->all());
+        $article->fill($request->all());
+
+        if ($request->hasFile('cover')) {
+            $file = $request->file('cover');
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+
+            $article->cover = $filename;
+        }
+
+        $article->save();
 
         return redirect()->route('article.edit', [$article]);
     }
