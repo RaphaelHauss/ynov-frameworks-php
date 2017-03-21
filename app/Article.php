@@ -19,6 +19,8 @@ class Article extends Model
 
     protected $perPage = 5;
 
+    protected $appends = ['apiUrl'];
+
     public function sluggable()
     {
         return [
@@ -55,5 +57,10 @@ class Article extends Model
     {
         $this->attributes['published_at'] = Carbon::createFromFormat('d/m/Y', $date)
             ->toDateTimeString();
+    }
+
+    public function getApiUrlAttribute()
+    {
+        return route('api.article.show', [$this]);
     }
 }
