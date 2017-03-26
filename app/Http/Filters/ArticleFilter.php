@@ -10,4 +10,12 @@ class ArticleFilter extends QueryFilter
     {
         return $this->like('title', $title);
     }
+
+    public function author($author)
+    {
+        return $this->builder->whereHas('author', function ($query) use ($author)
+        {
+            $query->where('name', 'LIKE', "%$author%");
+        });
+    }
 }

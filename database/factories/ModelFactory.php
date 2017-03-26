@@ -27,7 +27,7 @@ $factory->define(App\Article::class, function (Faker\Generator $faker) {
 	return [
 		'title' => $faker->sentence,
 		'content' => $faker->text,
-		'author_id' => App\User::first()->id,
+		'author_id' => App\User::inRandomOrder()->first()->id,
 		'published_at' => Carbon\Carbon::now()->format('d/m/Y'),
 	];
 });
