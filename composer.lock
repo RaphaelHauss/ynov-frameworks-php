@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9745a2733dfae3cbeeb35cc5740e11aa",
+    "content-hash": "d4c5a3e6d373758f4a406ea617e18a69",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -807,6 +807,48 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "kblais/query-filter",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kblais/query-filter.git",
+                "reference": "15962f3b70723c626e6df671e0c870831f821705"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kblais/query-filter/zipball/15962f3b70723c626e6df671e0c870831f821705",
+                "reference": "15962f3b70723c626e6df671e0c870831f821705",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.*",
+                "illuminate/http": "5.*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.2",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kblais\\QueryFilter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Killian Blais",
+                    "email": "contact@killianblais.fr"
+                }
+            ],
+            "description": "Easily create filters for your Eloquent model.",
+            "time": "2016-05-12T18:01:19+00:00"
         },
         {
             "name": "laravel/framework",
