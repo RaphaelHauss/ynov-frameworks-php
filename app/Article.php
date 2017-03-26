@@ -6,10 +6,11 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kblais\QueryFilter\FilterableTrait;
 
 class Article extends Model
 {
-    use SoftDeletes, Sluggable;
+    use SoftDeletes, Sluggable, FilterableTrait;
 
     protected $fillable = [
     	'content', 'title', 'author_id', 'published_at',

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Article;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Filters\ArticleFilter;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -13,9 +14,10 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ArticleFilter $filters)
     {
-        $articles = Article::with('author')
+        $articles = Article::filter($filters)
+            ->with('author')
             ->paginate();
 
         return response()->json($articles);
